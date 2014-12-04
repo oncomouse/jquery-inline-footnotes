@@ -1,0 +1,27 @@
+{
+  "name": "jquery-inline-footnotes",
+  "version": "1.0.0",
+  "authors": [
+    "oncomouse <oncomouse@gmail.com>"
+  ],
+  "description": "jQuery Plugin to position Markdown-generated plugins in the sidebar or as inline, accordion-style plugins (depending on browser width).",
+  "main": "javascripts/jquery.inline-footnotes.js",
+  "keywords": [
+    "responsive",
+    "footnotes",
+    "markdown",
+    "jquery"
+  ],
+  "license": "BSD",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-overlaps": "~1.2.3",
+    "jquery": "~2.1.1"
+  }
+}
