@@ -9,6 +9,7 @@ sup[id^="fnref"] {
   position: relative;
   display: block;
   margin: auto;
+  top: auto;
   margin-bottom: 1.5rem;
   border-top: 3px solid #cccccc;
   border-bottom: 3px solid #cccccc;
