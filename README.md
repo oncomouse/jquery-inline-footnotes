@@ -28,12 +28,11 @@ From this style of footnote (which a number of Markdown engines generate), this 
 
 ## Usage
 
-In addition to jQuery, `jquery-inline-footnotes` depends on `[jquery-overlaps](https://github.com/brandonaaron/jquery-overlaps)` for part of its collision detection. These can be installed using `bower` or downloaded separately. However you do it, you need to include some variation on the following code at the bottom of your document:
+In addition to jQuery, `jquery-inline-footnotes` depends on `[jquery-overlaps](https://github.com/brandonaaron/jquery-overlaps)`, however the minified version in `dist/` already includes the plugin, so you don't have to include it separately. These can be installed using `bower` or downloaded separately. However you do it, you need to include some variation on the following code at the bottom of your document:
 
 ```html
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
-<script src="/bower_components/jquery-overlaps/jquery.overlaps.js" type="text/javascript"></script>
-<script src="/javascripts/jquery.inline-footnotes.js" type="text/javascript"></script>
+<script src="/dist/jquery.inline-footnotes.min.js" type="text/javascript"></script>
 <script>
   $(document).ready(function() {
   	$.inlineFootnotes();
