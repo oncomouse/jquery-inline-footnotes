@@ -23,11 +23,26 @@ module.exports = function(grunt) {
 		clean: {
 			js: ["dist/*.js", "!dist/*.min.js"]
 		}
+		/*
+		 * Usage (https://github.com/vojtajina/grunt-bump):
+		 *
+ 		 * grunt bump:[major|minor|patch]
+		 *
+		 * grunt bump-only:[major|minor|patch]
+		 * grunt commit
+		 * 
+		 */
+		bump: {
+			options: {
+				files: ['package.json', 'bower.json']
+			}
+		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-bump');
 
 	grunt.registerTask('default', ['concat', 'uglify', 'clean']);
 
