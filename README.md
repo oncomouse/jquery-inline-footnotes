@@ -32,7 +32,7 @@ In addition to jQuery, `jquery-inline-footnotes` depends on `[jquery-overlaps](h
 
 ```html
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
-<script src="/javascripts/jquery.overlaps.js" type="text/javascript"></script>
+<script src="/bower_components/jquery-overlaps/jquery.overlaps.js" type="text/javascript"></script>
 <script src="/javascripts/jquery.inline-footnotes.js" type="text/javascript"></script>
 <script>
   $(document).ready(function() {
