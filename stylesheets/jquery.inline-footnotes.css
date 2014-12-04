@@ -3,6 +3,9 @@ sup[id^="fnref"] {
   line-height: 0;
   font-size: inherit; }
 
+.footnotes ol, .reversefootnote {
+  display: none; }
+
 .inline-footnote.closed {
   display: none; }
 .inline-footnote.opened {
@@ -72,5 +75,3 @@ sup[id^="fnref"] {
     font-size: inherit; }
     .inline-footnote sup:after {
       content: ". "; } }
-
-/*# sourceMappingURL=jquery.inline-footnotes.css.map */
