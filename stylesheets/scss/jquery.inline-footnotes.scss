@@ -1,16 +1,25 @@
+// Control the border appearance and size
 $border-color: #cccccc;
+$border-size: 3px;
+
+// Feel free to not use this at all, this is how I typeset my websites:
 $leading: 1.5rem;
+
+// The max width at which we can display sidebar footnotes. Will mostly likely be different for you:
 $maxColumnWidthForSideBar: 1155px;
 
-// Footnote stuff
+/* Change the style of footnote references to make them more clickable */
 sup[id^="fnref"] {
 	top: -0.25em;
 	line-height: 0;
 	font-size: inherit;
 }
 
-.reversefootnote {
-	display: none;
+/* Do add a js class to your HTML element onload, if your site doesn't do it. We don't want to break footnotes for non-JS users. */
+html.js {
+	.reversefootnote {
+		display: none;
+	}
 }
 
 .inline-footnote {
@@ -18,13 +27,16 @@ sup[id^="fnref"] {
 		display: none;
 	}
 	&.opened {
+		/* Important positioning code */
 		position: relative;
 		display: block;
 		margin: auto;
 		top: auto !important;
+		
+		/* Style code that may need to be changed for your app */
 		margin-bottom: $leading;
-		border-top: 3px solid $border-color;
-		border-bottom: 3px solid $border-color;
+		border-top: $border-size solid $border-color;
+		border-bottom: $border-size solid $border-color;
 		margin-top: 24px;
 		padding-top: 0.5rem;
 		padding-bottom: 0.5rem;
@@ -33,7 +45,8 @@ sup[id^="fnref"] {
 		& > *:first-child {
 			margin-top: 0;
 		}
-		&:after, &:before {
+		
+		&:after, &:before { /* Code to generate accordion arrows */
 			bottom: 100%;
 			left: 50%;
 			border: solid transparent;
@@ -56,7 +69,8 @@ sup[id^="fnref"] {
 			margin-left: -24px;
 		}
 	}
-	sup {
+
+	sup { /* Hide <sup> in this version */
 		display: none;
 	}
 }
@@ -67,15 +81,19 @@ sup[id^="fnref"] {
 @media screen and (min-width: $maxColumnWidthForSideBar) {
 	.inline-footnote {
 		&.closed, &.opened {
+			/* Positioning CSS */
 			display: block;
 			position: absolute;
-			font-size: 0.7em;
-			margin-top: -1.5em;
-			width: 7rem;
-			border: 0;
 			top: auto;
+			
+			/* Sizing information */
+			width: 7rem;
+			left: -7rem - $leading / 2; /* Set this to -1 * (width + however much left spacing you want between footnotes & content) */
+			
+			margin-top: -1.5em;			
+			font-size: 0.7em;
+			border: 0;
 			padding: 0;
-			left: -7rem - $leading / 2;
 			p,ul,ol {
 				margin-top: $leading * 0.7;
 				&:first-child {
@@ -94,7 +112,8 @@ sup[id^="fnref"] {
 				display: none;
 			}
 		}
-		sup {
+
+		sup { /* Use <sup> elements as footnote numbers in this version */
 			display: inline;
 			top: 0;
 			font-size: inherit;
