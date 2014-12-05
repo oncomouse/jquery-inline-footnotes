@@ -43,19 +43,16 @@
 			$footnoteLink.click(function(e) {
 				e.preventDefault();
 				var footnoteNumber = $(this).parent().attr('id').replace(opts['footNoteRefID'],"");
-				$('#' + opts['inlineFootNoteID'] + footnoteID).toggleClass('closed opened');
+				if ($.inlineFootnotes.isWindowTooSmall()) {
+					$('#' + opts['inlineFootNoteID'] + footnoteID).toggleClass('closed opened');
+					$(window).resize();
+				}
 				return false;
 			});
 		});
 
 		$(window).resize(function() {
-			// Detect if we're using a mediaQuery to detect window width or jQuery:
-			var test = ($(window).width() <= opts['columnWidth']);
-			if (opts['mediaQuery'] !== null) {
-				test = !(window.matchMedia(opts['mediaQuery']).matches);
-			}
-			
-			if(test) {
+			if($.inlineFootnotes.isWindowTooSmall()) {
 				$('sup[id^="' + opts['footNoteRefID'] + '"]').each(function() { 
 					var $footnoteRef = $(this);
 					var footnoteID = $footnoteRef.attr('id').replace(opts['footNoteRefID'],"");
@@ -150,6 +147,19 @@
 		else if("addRule" in sheet) {
 			sheet.addRule(selector, rules, index);
 		}
+	}
+	
+	$.inlineFootnotes.isWindowTooSmall = function() {
+		var test, opts;
+		
+		opts = $.extend( {}, $.inlineFootnotes.defaults);
+		
+		// Detect if we're using a mediaQuery to detect window width or jQuery:
+		test = ($(window).width() <= opts['columnWidth']);
+		if (opts['mediaQuery'] !== null) {
+			test = !(window.matchMedia(opts['mediaQuery']).matches);
+		}
+		return test;
 	}
 	
 	$.inlineFootnotes.defaults = {
