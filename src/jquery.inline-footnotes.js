@@ -12,6 +12,10 @@
 		var opts = $.extend( {}, $.inlineFootnotes.defaults, options );
 		
 		var $stylesheet = $.inlineFootnotes.attachNewStylesheet();
+		
+		if($('*[data-inlined=true]').length > 0) {
+			return true;
+		}
 
 		$('sup[id^="' + opts['footNoteRefID'] + '"]').each(function(i) {
 			var $footnoteRef = $(this);
@@ -27,6 +31,7 @@
 			var $newFootnote = $('<span class="inline-footnote closed" id="' + opts['inlineFootNoteID'] + footnoteID+'">' + $footnote.html() + '</span>');
 			
 			$footnote.parent().hide();
+			$footnote.parent().attr('data-inlined', true);
 
 			$newFootnote.find('p:first-child').html('<sup>' + footnoteNumber + '</sup>' + $newFootnote.find('p:first-child').html());
 
