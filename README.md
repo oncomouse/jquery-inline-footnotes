@@ -48,6 +48,10 @@ As the width of your content column may allow smaller screens to display sidebar
 
 ## Configuration
 
+Much of the position and appearance of the footnotes is controlled through CSS. There are both CSS and SASS versions of the default CSS code in `stylesheets/`. There are a lot of options to customize and you will probably need to change things in your site.
+
+**One very important note about configuration:** the default minimum window width of 1155 is the assumed minimum size of the window needed to display footnotes in the sidebar. *This value is probably different for your application*. You have to change this value in two places: in the CSS file, there is a media query (`@media screen and (min-width: 1155px)`) that controls the styles for accordion and sidebar footnotes. Additionally, the column width must be passed to the $.inlineFootnotes() function call as an option (see below). Also, see the examples for how to do this (below).
+
 The following options (with their meaning in comments) may be passed in an options object to the $.inlineFootnotes() function at initialization:
 
 ```javascript
@@ -62,3 +66,47 @@ $.inlineFootnotes({
 	DEBUG: false // Display debugging information?
 });
 ```
+
+## Usage Examples
+
+As mentioned above, you will most likely need to change the minimum window size at which footnotes display in the sidebar. Below is an example for doing so, in which the minimum size is changed from the default (1155px) to a smaller size (960px).
+
+In `stylesheets/jquery-inline-footnotes.css`, the media query (`@media screen and (min-width: 1155px) {`) is changed to
+
+```css
+@media screen and (min-width: 960px) {
+
+...
+
+}
+```
+
+Additionally, the plugin must be initialized using one of the following two options:
+
+In the first (easiest), the edited media query is simply passed to the function:
+
+```javascript
+<script>
+	$(document).ready(function(){
+		$.inlineFootnotes({
+			mediaQuery: '@media screen and (min-width: 960px)'
+		})
+	});
+</script>
+```
+
+This solution is simple (copy & paste), but does make use of the `window.matchMedia`, [which is not supported](http://caniuse.com/#feat=matchmedia) in older browsers. You can, however, [polyfill](https://remysharp.com/2010/10/08/what-is-a-polyfill) matchMedia by including [Modernizr](http://modernizr.com/) in your application (include `<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>` in your document head to add this).
+
+You can also rely on jQuery to calculate window width (assuming you are using a pixel value for minimum width) in the following example:
+
+```javascript 
+<script>
+	$(document).ready(function(){
+		$.inlineFootnotes({
+			columnWidth: 960
+		})
+	});
+</script>
+```
+
+This version also works cross browser, so long as your minimum window width is calculated using pixels and not `rem` or `em` or `%` units.
