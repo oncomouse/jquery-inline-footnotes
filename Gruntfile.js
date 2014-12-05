@@ -51,6 +51,16 @@ module.exports = function(grunt) {
 				commitFiles: ['package.json', 'bower.json'],
 				 pushTo: 'origin'
 			}
+		},
+		watch: {
+			js: {
+				files: ['src/**/*.js'],
+				tasks: ['js']
+			},
+			css: {
+				files: ['stylesheets/**/*.scss'],
+				tasks: ['css']
+			}
 		}
 	});
 
@@ -59,10 +69,12 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-compass');
+	grunt.loadNpmTasks('grunt-contrib-watch')
 	grunt.loadNpmTasks('grunt-bump');
 
 	grunt.registerTask('css', ['compass', 'cssmin']);
-	grunt.registerTask('js', ['concat', 'uglify', 'clean'])
+	grunt.registerTask('js', ['concat', 'uglify', 'clean']);
+	//grunt.registerTask('watch', ['watch:css', 'watch:js']);
 	grunt.registerTask('default', ['js', 'css']);
 
 };
