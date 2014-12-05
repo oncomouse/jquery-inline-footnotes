@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 				separator: ';'
 			},
 			dist: {
-				src: ['bower_components/jquery-overlaps/jquery.overlaps.js', 'javascripts/**/*.js'],
+				src: ['bower_components/jquery-overlaps/jquery.overlaps.js', 'src/**/*.js'],
 				dest: 'dist/jquery.inline-footnotes.js'
 			}
 		},
