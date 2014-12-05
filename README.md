@@ -6,6 +6,8 @@ With the sidebar footnotes, this plugin also handles collision detection. With t
 
 See an example at [http://oncomouse.github.io/inline-footnotes.html](http://oncomouse.github.io/inline-footnotes.html).
 
+Also, [this blog post](http://andrew.pilsch.com/blog/2014/12/05/stylish-markdown-footnotes-w-jquery/) discusses some of the reasoning behind this plugin.
+
 ## Syntax Example
 
 Assuming you have some markdown that looks like this:
