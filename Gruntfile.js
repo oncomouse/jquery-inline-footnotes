@@ -40,7 +40,8 @@ module.exports = function(grunt) {
 		 */
 		bump: {
 			options: {
-				files: ['package.json', 'bower.json']
+				files: ['package.json', 'bower.json'],
+				 pushTo: 'origin'
 			}
 		}
 	});
