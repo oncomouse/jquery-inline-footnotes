@@ -29,6 +29,13 @@ module.exports = function(grunt) {
 		clean: {
 			js: ["dist/*.js", "!dist/*.min.js"]
 		},
+		compass: {
+			dist: {
+				options: {
+					config: 'config.rb'
+				}
+			}
+		},
 		/*
 		 * Usage (https://github.com/vojtajina/grunt-bump):
 		 *
@@ -51,8 +58,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-bump');
 
-	grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'clean']);
+	grunt.registerTask('css', ['compass', 'cssmin']);
+	grunt.registerTask('js', ['concat', 'uglify', 'clean'])
+	grunt.registerTask('default', ['js', 'css']);
 
 };
