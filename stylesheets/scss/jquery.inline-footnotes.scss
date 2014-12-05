@@ -21,7 +21,7 @@ sup[id^="fnref"] {
 		position: relative;
 		display: block;
 		margin: auto;
-		top: auto;
+		top: auto !important;
 		margin-bottom: $leading;
 		border-top: 3px solid $border-color;
 		border-bottom: 3px solid $border-color;
