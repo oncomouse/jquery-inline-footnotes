@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 		},
 		clean: {
 			js: ["dist/*.js", "!dist/*.min.js"]
-		}
+		},
 		/*
 		 * Usage (https://github.com/vojtajina/grunt-bump):
 		 *
