@@ -5,7 +5,7 @@
     "oncomouse <oncomouse@gmail.com>"
   ],
   "description": "jQuery Plugin to position Markdown-generated plugins in the sidebar or as inline, accordion-style plugins (depending on browser width).",
-  "main": "javascripts/jquery.inline-footnotes.js",
+  "main": "src/jquery.inline-footnotes.js",
   "keywords": [
     "responsive",
     "footnotes",
