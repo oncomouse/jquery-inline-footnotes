@@ -87,6 +87,7 @@
 				}
 				root.after($newFootnote.clone().css('top', $footnoteRef.offset().top - root.offset().top).addClass('cloned'));
 				$newFootnote.addClass('hidden').attr('id', $newFootnote.attr('id') + '_original');
+				$footnoteRef.find('a').attr('data-target', $newFootnote.attr('id'));
 			}
 
 			var $footnoteLink = $footnoteRef.find('a');
@@ -94,12 +95,10 @@
 	
 			$footnoteLink.click(function(e) {
 				e.preventDefault();
-				var footnoteNumber = $(this).parent().attr('id').replace(opts['footNoteRefID'],"");
 				if (isWindowTooSmall()) {
-					$('#' + opts['inlineFootNoteID'] + footnoteID).toggleClass('closed opened');
+					$((typeof $(this).attr('data-target') === 'undefined') ? '#' + opts['inlineFootNoteID'] + footnoteID : '#' + $(this).attr('data-target')).toggleClass('closed opened');
 					$(window).resize();
 				}
-				return false;
 			});
 		});
 
