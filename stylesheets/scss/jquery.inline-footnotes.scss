@@ -1,25 +1,30 @@
 // Control the border appearance and size
-$border-color: #cccccc;
-$border-size: 3px;
+$footnote-border-color: #cccccc !default;
+$footnote-border-size: 3px !default;
 
-// Feel free to not use this at all, this is how I typeset my websites:
-$leading: 1.5rem;
+// Color of the "up" arrow in in-line footnotes:
+$footnote-arrow-color: white !default;
+
+$leading: 28px !default;
+
+// Footnote font size:
+$footnote-font-size: 0.7em;
+
+// how wide should the footnotes be:
+$footnote-width: 133px !default;
 
 // The max width at which we can display sidebar footnotes. Will mostly likely be different for you:
-$maxColumnWidthForSideBar: 1155px;
+$max-column-width-for-sidebar: 1155px !default;
 
-/* Change the style of footnote references to make them more clickable */
+// Footnote stuff
 sup[id^="fnref"] {
 	top: -0.25em;
 	line-height: 0;
 	font-size: inherit;
 }
 
-/* Do add a js class to your HTML element onload, if your site doesn't do it. We don't want to break footnotes for non-JS users. */
-html.js {
-	.reversefootnote {
-		display: none;
-	}
+.reversefootnote {
+	display: none;
 }
 
 .inline-footnote {
@@ -27,26 +32,22 @@ html.js {
 		display: none;
 	}
 	&.opened {
-		/* Important positioning code */
 		position: relative;
 		display: block;
 		margin: auto;
 		top: auto !important;
-		
-		/* Style code that may need to be changed for your app */
 		margin-bottom: $leading;
-		border-top: $border-size solid $border-color;
-		border-bottom: $border-size solid $border-color;
-		margin-top: 24px;
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
+		border-top: $footnote-border-size solid $footnote-border-color;
+		border-bottom: $footnote-border-size solid $footnote-border-color;
+		margin-top: $leading;
+		padding-top: $leading / 3;
+		padding-bottom: $leading / 3;
 		padding-left: $leading / 2;
 		padding-right: $leading / 2;
 		& > *:first-child {
 			margin-top: 0;
 		}
-		
-		&:after, &:before { /* Code to generate accordion arrows */
+		&:after, &:before {
 			bottom: 100%;
 			left: 50%;
 			border: solid transparent;
@@ -64,13 +65,15 @@ html.js {
 		}
 		&:before {
 			border-color: rgba(0, 0, 0, 0);
-			border-bottom-color: $border-color;
+			border-bottom-color: $footnote-border-color;
 			border-width: 24px;
 			margin-left: -24px;
 		}
 	}
-
-	sup { /* Hide <sup> in this version */
+	&.cloned {
+		display: none;
+	}
+	sup {
 		display: none;
 	}
 }
@@ -78,22 +81,18 @@ html.js {
 /* 
  You can copy this media query (minus the "{") as the mediaQuery option for the javascript to have a consistent switching:
 */
-@media screen and (min-width: $maxColumnWidthForSideBar) {
+@media screen and (min-width: $max-column-width-for-sidebar) {
 	.inline-footnote {
-		&.closed, &.opened {
-			/* Positioning CSS */
+		&.closed, &.opened,&.cloned {
 			display: block;
 			position: absolute;
-			top: auto;
-			
-			/* Sizing information */
-			width: 7rem;
-			left: -7rem - $leading / 2; /* Set this to -1 * (width + however much left spacing you want between footnotes & content) */
-			
-			margin-top: -1.5em;			
-			font-size: 0.7em;
+			font-size: $footnote-font-size;
+			margin-top: $footnote-font-size * -2;
+			width: $footnote-width;
 			border: 0;
+			top: auto;
 			padding: 0;
+			left: -1 * $footnote-width - $leading / 2;
 			p,ul,ol {
 				margin-top: $leading * 0.7;
 				&:first-child {
@@ -112,8 +111,10 @@ html.js {
 				display: none;
 			}
 		}
-
-		sup { /* Use <sup> elements as footnote numbers in this version */
+		&.hidden {
+			display: none;
+		}
+		sup {
 			display: inline;
 			top: 0;
 			font-size: inherit;
