@@ -59,7 +59,7 @@ sup[id^="fnref"] {
 		}
 		&:after {
 			border-color: rgba(0, 0, 0, 0);
-			border-bottom-color: white;
+			border-bottom-color: $footnote-arrow-color;
 			border-width: 20px;
 			margin-left: -20px;
 		}
