@@ -104,12 +104,14 @@
 
 		$(window).resize(function() {
 			if(isWindowTooSmall()) {
+				$('html').addClass('footnote-inline').removeClass('footnote-sidebar');
 				$('sup[id^="' + opts['footNoteRefID'] + '"]').each(function() { 
 					var $footnoteRef = $(this);
 					var footnoteID = $footnoteRef.attr('id').replace(opts['footNoteRefID'],"");
 					addCSSRule($stylesheet, '#' + opts['inlineFootNoteID'] + footnoteID+':before, #' + opts['inlineFootNoteID'] +footnoteID+':after', 'left: ' + ($footnoteRef.offset().left - $footnoteRef.parent().offset().left) + 'px !important;', -1);	
 				});
 			} else {
+				$('html').removeClass('footnote-inline').addClass('footnote-sidebar');
 				var footnotes = $('*[id^="'+opts['inlineFootNoteID']+'"]');
 				var footnoteIDs = footnotes.map(function() { return $(this).attr('id').replace(opts['inlineFootNoteID'], ''); });
 				
