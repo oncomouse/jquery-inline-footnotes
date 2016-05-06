@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 		},
 		uglify: {
 			options: {
-				banner: '/*! <%= pkg.name %> v<%= pkg.version %> (also contains jquery-overlaps v 1.2.3) |	<%= grunt.template.today("dd-mm-yyyy") %> */\n'
+				banner: '/*! \n * <%= pkg.name %> v<%= pkg.version %>\n *  \n * Copyright 2015 Andrew Pilsch <apilsch@tamu.edu> (http://andrew.pilsch.com)\n * \n *   (also contains jquery-overlaps v 1.2.3, Copyright (c) 2010 Brandon Aaron (http://brandonaaron.net))\n * \n * Built On: <%= grunt.template.today("dd-mm-yyyy") %>\n *\n */\n',
 			},
 			dist: {
 				src: 'dist/jquery.inline-footnotes.js',
