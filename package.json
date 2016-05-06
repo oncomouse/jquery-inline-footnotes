@@ -1,6 +1,6 @@
 {
   "name": "jquery-inline-footnotes",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "repository": "https://github.com/oncomouse/jquery-inline-footnotes",
   "devDependencies": {
     "grunt": "~0.4.5",
