@@ -1,13 +1,11 @@
 /*! 
- * jquery-inline-footnotes v1.0.18
+ * jquery-inline-footnotes v1.0.20
  *  
  * Copyright 2015 Andrew Pilsch <apilsch@tamu.edu> (http://andrew.pilsch.com)
  * 
  * Built On: 06-05-2016
  *
  */
-
-
 
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {

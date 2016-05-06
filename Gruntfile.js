@@ -33,8 +33,8 @@ module.exports = function(grunt) {
 			taskName: {
 				options: {
 					position: 'top',
-					banner: '/*! \n * <%= pkg.name %> v<%= pkg.version %>\n *  \n * Copyright 2015 Andrew Pilsch <apilsch@tamu.edu> (http://andrew.pilsch.com)\n * \n * Built On: <%= grunt.template.today("dd-mm-yyyy") %>\n *\n */\n',
-					linebreak: false,
+					banner: '/*! \n * <%= pkg.name %> v<%= pkg.version %>\n *  \n * Copyright 2015 Andrew Pilsch <apilsch@tamu.edu> (http://andrew.pilsch.com)\n * \n * Built On: <%= grunt.template.today("dd-mm-yyyy") %>\n *\n */',
+					linebreak: true,
 					replace: /\/\*\![\s\S]*\*\//m
 				},
 				files: {
