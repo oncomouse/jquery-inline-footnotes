@@ -1,3 +1,13 @@
+/*! 
+ * jquery-inline-footnotes v1.0.16
+ *  
+ * Copyright 2015 Andrew Pilsch <apilsch@tamu.edu> (http://andrew.pilsch.com)
+ * 
+ * Built On: 06-05-2016
+ *
+ */
+
+
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
