@@ -1,23 +1,23 @@
 /*! 
- * jquery-inline-footnotes v1.0.20
+ * jquery-inline-footnotes v1.0.21
  *  
  * Copyright 2015 Andrew Pilsch <apilsch@tamu.edu> (http://andrew.pilsch.com)
  * 
- * Built On: 06-05-2016
+ * Built On: 11-05-2016
  *
  */
 
 (function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        // AMD. Register as an anonymous module.
-        define(['jquery'], factory);
-	} else if (typeof module !== 'undefined' && module.exports) {
+	if (typeof define === 'function' && define.amd) {
+		define(['jQuery'], function ($) {
+			return (root.returnExportsGlobal = factory($));
+		});
+	} else if (typeof exports === 'object') {
 		module.exports = factory(require('jquery'));
-    } else {
-        // Browser globals
-        root.returnExports = factory(root.jQuery);
-    }
-}(window, function ($) {
+	} else {
+		root.returnExportsGlobal = factory(root.jQuery);
+	}
+}(this, function ($) {
 	$.inlineFootnotes = function( options ) {
 		
 		var opts = $.extend( {}, $.inlineFootnotes.defaults, options );
