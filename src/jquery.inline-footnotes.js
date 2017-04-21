@@ -1,11 +1,12 @@
 /*! 
- * jquery-inline-footnotes v1.0.21
+ * jquery-inline-footnotes v1.0.22
  *  
  * Copyright 2015 Andrew Pilsch <apilsch@tamu.edu> (http://andrew.pilsch.com)
  * 
- * Built On: 11-05-2016
+ * Built On: 21-04-2017
  *
  */
+
 
 (function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
@@ -110,8 +111,8 @@
 				}
 			});
 		});
-
-		$(window).resize(function() {
+		
+		var resizeHandler = function() {
 			if(isWindowTooSmall()) {
 				$('html').addClass('footnote-inline').removeClass('footnote-sidebar');
 				$('sup[id^="' + opts['footNoteRefID'] + '"]').each(function() { 
@@ -178,7 +179,10 @@
 					count++;
 				}
 			}
-		}.bind(this)).resize();
+		}
+		
+		$(window).resize(resizeHandler.bind(this));
+		resizeHandler();
 	}
 	
 	$.inlineFootnotes.defaults = {
